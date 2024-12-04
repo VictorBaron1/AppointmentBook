@@ -71,8 +71,13 @@ public class AppointmentBook {
         for(int i = startPeriod; i <= endPeriod; i++)
         {
             int freeBlock = findFreeBlock(i, duration);
-            
+            if(freeBlock > -1)
+            {
+                reserveBlock(i, freeBlock, duration);
+                return true;
+            }
         }
+        return false;
     }
 
     // There may be instance variables, constructors, and methods that are not shown.
